@@ -52,9 +52,11 @@ def main():
     
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
+        st.text("Clustering City Layouts")
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
+        st.text("Blending City Layouts")
         
 if __name__ == "__main__":
     main()
