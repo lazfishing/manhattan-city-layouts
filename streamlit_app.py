@@ -8,6 +8,7 @@ import random
 import time
 import os
 import SessionState
+from PIL import Image
 
 def get_session_state(rando):
     session_state = SessionState.get(random_number=random.random(), nsamples='', 
