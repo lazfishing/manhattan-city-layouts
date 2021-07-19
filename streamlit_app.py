@@ -46,8 +46,8 @@ def latent_interpolation(nta_A,nta_B,manhattan_clusters):
     steps = [latent0]+[latent0 + x*(latent1-latent0) for x in torch.linspace(0.1, 0.8, steps=10)]+[latent1]
     latent_steps = torch.stack(steps, dim=0)
 
-    P0 = torch.reshape(root_P_list[A],(1,5))
-    P1 = torch.reshape(root_P_list[B],(1,5))
+    P0 = torch.reshape(root_P_sample[A],(1,5))
+    P1 = torch.reshape(root_P_sample[B],(1,5))
 
     p_steps = [P0]+[P0 + x*(P1-P0) for x in torch.linspace(0.1, 0.8, steps=10)]+[P1]
     P_steps = torch.stack(p_steps, dim=0)
