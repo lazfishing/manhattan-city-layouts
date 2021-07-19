@@ -40,6 +40,7 @@ def main():
     main_txt = """Manhattan City Layout Analysis"""
     sub_txt = "2021 NYU CUSP Capstone Project"
     display_app_header(main_txt,sub_txt,is_sidebar = False)
+    manhattan_clusters = pd.read_csv('city_layouts_with_clustering.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
@@ -61,6 +62,7 @@ def main():
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         st.text("Blending City Layouts")
+        st.selectbox('Neighbourhood A', options=[manhattan_clusters.nta.unique()])
         
 if __name__ == "__main__":
     main()
