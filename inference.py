@@ -2,7 +2,7 @@ import torch
 import model_ae_tree_box_ab2_new_re_weight_lstm_print
 from model_ae_tree_box_ab2_new_re_weight_lstm_print import *
 
-model = AE.load_from_drive(AE, name=path+'tree_lstm_64_test_32box_2_best', model_dir='', device=torch.device('cuda'), n_feature=512)
+model = AE.load_from_drive(AE, name='tree_lstm_64_test_32box_2_best', model_dir='', device=torch.device('cuda'), n_feature=512)
 
 def inference_final_set(P, F, n, out=[]):
     '''
