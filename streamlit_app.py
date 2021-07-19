@@ -62,7 +62,7 @@ def main():
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         st.text("Blending City Layouts")
-        st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
+        st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:30])
         
 if __name__ == "__main__":
     main()
