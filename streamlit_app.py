@@ -91,6 +91,7 @@ def main():
         st.text("Blending City Layouts")
         nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
         nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
+        latent_interpolation(nta_A,nta_B)
         
 if __name__ == "__main__":
     main()
