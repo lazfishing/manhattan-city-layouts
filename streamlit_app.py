@@ -37,8 +37,8 @@ def display_side_panel_header(txt):
 def latent_interpolation(nta_A,nta_B,manhattan_clusters):
     A = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]])
     B = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]])
-    torch_F_sample = torch.load('root_F_sample.pt')
-    torch_P_sample = torch.load('root_P_sample.pt')
+    root_F_sample = torch.load('root_F_sample.pt')
+    root_P_sample = torch.load('root_P_sample.pt')
     
     latent0 = root_F_sample[A]
     latent1 = root_F_sample[B]
