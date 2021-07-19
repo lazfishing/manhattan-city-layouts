@@ -68,7 +68,7 @@ def main():
         nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
         nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
         latent_num = st.slider('Drag the slider to see blending',1,12)
-        image = latent_interpolation(nta_A,nta_B,manhattan_clusters,latent_num)
+        image = latent_interpolation(nta_A,nta_B,manhattan_clusters,latent_num-1)
         st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
         
 if __name__ == "__main__":
