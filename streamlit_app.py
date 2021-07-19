@@ -43,13 +43,17 @@ def main():
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Clustering City Layouts','Blending City Layouts'])
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering City Layouts','Blending City Layouts'])
 #     display_side_panel_header("Configuration")
 #     session_state.nsamples = st.sidebar.slider("Number of Competitors to Analyse: ", 1, v_nsamples, 1)
 #     display_side_panel_header("Audience Profile")
 #     session_state.audience_age = st.sidebar.slider("Audience Age Range: ", 16, 65, (26, 30))
 #     session_state.audience_awareness = st.sidebar.selectbox("Audience Awareness: ", options=awareness_stages)
     
+    ### Introduction ###
+    if session_state.pages == 'Introduction':
+        st.text("Introduction")
+
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
         st.text("Clustering City Layouts")
