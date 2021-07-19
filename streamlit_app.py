@@ -9,6 +9,7 @@ import time
 import os
 import SessionState
 import inference
+import torch
 
 def get_session_state(rando):
     session_state = SessionState.get(random_number=random.random(), nsamples='', 
