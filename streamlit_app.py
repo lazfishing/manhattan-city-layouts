@@ -36,7 +36,8 @@ def display_side_panel_header(txt):
 def latent_interpolation(nta_A,nta_B,manhattan_clusters):
     A = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]])
     B = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]])
-    image = Image.open('sunrise.jpg')
+#    image = Image.open('interpolation/{}_{}.png'.format(A,B))
+    image = Image.open('interpolation/1_1.png')
     return image
 
 def main():
