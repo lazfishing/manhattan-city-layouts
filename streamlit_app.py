@@ -34,9 +34,8 @@ def display_side_panel_header(txt):
     st.sidebar.markdown(f'## {txt}')
     
 def latent_interpolation(nta_A,nta_B,manhattan_clusters):
-    manhattan_clusters.nta.unique()
-    A = int(np.linspace(1,50)[[i for i, val in enumerate(clusters.nta.unique()==nta_A) if val][0]])
-    B = int(np.linspace(1,50)[[i for i, val in enumerate(clusters.nta.unique()==nta_B) if val][0]])
+    A = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]])
+    B = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]])
     
     latent0 = root_F_sample[A]
     latent1 = root_F_sample[B]
