@@ -1,3 +1,5 @@
+import torch
+
 def inference_final_set(P, F, n, out=[]):
     '''
     Input:
