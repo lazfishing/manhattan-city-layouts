@@ -33,7 +33,7 @@ def display_app_header(main_txt,sub_txt,is_sidebar = False):
 def display_side_panel_header(txt):
     st.sidebar.markdown(f'## {txt}')
     
-def latent_interpolation(nta_A,nta_B):
+def latent_interpolation(nta_A,nta_B,manhattan_clusters):
     manhattan_clusters.nta.unique()
     A = int(np.linspace(1,50)[[i for i, val in enumerate(clusters.nta.unique()==nta_A) if val][0]])
     B = int(np.linspace(1,50)[[i for i, val in enumerate(clusters.nta.unique()==nta_B) if val][0]])
@@ -72,11 +72,6 @@ def main():
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
     session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering City Layouts','Blending City Layouts'])
-#     display_side_panel_header("Configuration")
-#     session_state.nsamples = st.sidebar.slider("Number of Competitors to Analyse: ", 1, v_nsamples, 1)
-#     display_side_panel_header("Audience Profile")
-#     session_state.audience_age = st.sidebar.slider("Audience Age Range: ", 16, 65, (26, 30))
-#     session_state.audience_awareness = st.sidebar.selectbox("Audience Awareness: ", options=awareness_stages)
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
@@ -91,7 +86,7 @@ def main():
         st.text("Blending City Layouts")
         nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
         nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
-        latent_interpolation(nta_A,nta_B)
+        latent_interpolation(nta_A,nta_B,manhattan_clusters)
         
 if __name__ == "__main__":
     main()
