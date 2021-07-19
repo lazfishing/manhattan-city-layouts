@@ -2,37 +2,59 @@ from collections import namedtuple
 import altair as alt
 import math
 import pandas as pd
+import numpy as np
 import streamlit as st
+import random
+import time
+import os
+import SessionState
 
-"""
-# Welcome to Streamlit!
+def get_session_state(rando):
+    session_state = SessionState.get(random_number=random.random(), nsamples='', 
+                                     generated=pd.DataFrame(columns=['Competitor','Similarity','Channels','Target Keywords']))
+    return session_state
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+def cacherando():
+    rando = random_number=random.random()
+    return rando
 
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+def display_app_header(main_txt,sub_txt,is_sidebar = False):
+    html_temp = f"""
+    <h1 style = "color:black; text_align:left;"> {main_txt} </h2>
+    <h2 style = "color:black; text_align:left;"> {sub_txt} </p>
+    </div>
+    """
+    if is_sidebar:
+        st.sidebar.markdown(html_temp, unsafe_allow_html = True)
+    else: 
+        st.markdown(html_temp, unsafe_allow_html = True)
+        
+def display_side_panel_header(txt):
+    st.sidebar.markdown(f'## {txt}')
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+def main():
+    st.set_page_config(page_title='Manhattan City Layout Analysis') #layout='wide', initial_sidebar_state='auto'
+    rando = cacherando()
+    session_state = get_session_state(rando)
+    sep = '<|endoftext|>'
+    main_txt = """Manhattan City Layout Analysis"""
+    sub_txt = "2021 NYU CUSP Capstone Project"
+    display_app_header(main_txt,sub_txt,is_sidebar = False)
+    
+    ### SIDEBAR CONTENT ###
+    display_side_panel_header("Menu")
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Clustering City Layouts','Blending City Layouts'])
+#     display_side_panel_header("Configuration")
+#     session_state.nsamples = st.sidebar.slider("Number of Competitors to Analyse: ", 1, v_nsamples, 1)
+#     display_side_panel_header("Audience Profile")
+#     session_state.audience_age = st.sidebar.slider("Audience Age Range: ", 16, 65, (26, 30))
+#     session_state.audience_awareness = st.sidebar.selectbox("Audience Awareness: ", options=awareness_stages)
+    
+    ### Clustering City Layouts ###
+    if session_state.pages == 'Clustering City Layouts':
 
-
-with st.echo(code_location='below'):
-    total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-    num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
-
-    Point = namedtuple('Point', 'x y')
-    data = []
-
-    points_per_turn = total_points / num_turns
-
-    for curr_point_num in range(total_points):
-        curr_turn, i = divmod(curr_point_num, points_per_turn)
-        angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-        radius = curr_point_num / total_points
-        x = radius * math.cos(angle)
-        y = radius * math.sin(angle)
-        data.append(Point(x, y))
-
-    st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-        .mark_circle(color='#0068c9', opacity=0.5)
-        .encode(x='x:Q', y='y:Q'))
+    ### Blending City Layouts ###
+    if session_state.pages == 'Blending City Layouts':
+        
+if __name__ == "__main__":
+    main()
