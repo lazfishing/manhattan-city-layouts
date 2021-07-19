@@ -8,7 +8,7 @@ import random
 import time
 import os
 import SessionState
-import inference
+from inference import inference_final_set, plot_boxes2
 import torch
 
 def get_session_state(rando):
