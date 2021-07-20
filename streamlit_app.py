@@ -34,9 +34,7 @@ def display_side_panel_header(txt):
     st.sidebar.markdown(f'## {txt}')
 
 @st.cache(suppress_st_warning=True)
-def latent_interpolation(nta_A,nta_B,manhattan_clusters):
-    A = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]])
-    B = int(np.linspace(1,50)[[i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]])
+def latent_interpolation(A,B,manhattan_clusters):
 #    image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num))
 #    image = Image.open('interpolation/test_{}.png'.format(latent_num))
     images = []
@@ -71,8 +69,11 @@ def main():
         st.text("Blending City Layouts")
         nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
         nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
+        A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
+        B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
+        
         latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
-        images = latent_interpolation(nta_A,nta_B,manhattan_clusters)
+        images = latent_interpolation(A,B,manhattan_clusters)
         st.image(images[latent_num-1], caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
         
 if __name__ == "__main__":
