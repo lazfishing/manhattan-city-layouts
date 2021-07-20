@@ -41,7 +41,7 @@ def latent_interpolation(nta_A,nta_B,manhattan_clusters,latent_num):
 #    image = Image.open('interpolation/test_{}.png'.format(latent_num))
     images = []
     for i in range(12):
-        images.append(Image.open('interpolation/test_*.png'))
+        images.append(Image.open('interpolation/test_{}.png'.format(i)))
     return images
 
 def main():
