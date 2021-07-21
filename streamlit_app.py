@@ -66,12 +66,8 @@ def main():
 
         tooltip = {
             "text":
-                "<b>Name:</b> {ntaname} <br/>"
-                "<b>City Style Metric:</b> {gmm_pca} <br/>",
-            "style": {
-                "backgroundColor": "steelblue",
-                "color": "black",
-            }
+                "Neighborhood: {ntaname}"
+#                 "City Style Metric: {gmm_pca}",
         }
 
         st.pydeck_chart(pdk.Deck(
