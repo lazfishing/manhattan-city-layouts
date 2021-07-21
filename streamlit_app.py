@@ -63,6 +63,27 @@ def main():
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
         st.text("Clustering City Layouts")
+        st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/light-v9',
+            initial_view_state=pdk.ViewState(
+                latitude=37.76,
+                longitude=-122.4,
+                zoom=11,
+                pitch=50,
+            ),
+#             layers=[
+#                 pdk.Layer(
+#                     'HexagonLayer',
+#                     data=df,
+#                     get_position='[lon, lat]',
+#                     radius=200,
+#                     elevation_scale=4,
+#                     elevation_range=[0, 1000],
+#                     pickable=True,
+#                     extruded=True,
+#                 ),
+#             ],
+        ))
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
