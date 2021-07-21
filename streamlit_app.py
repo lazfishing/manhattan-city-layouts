@@ -86,10 +86,16 @@ def main():
                 pdk.Layer(
                     "GeoJsonLayer",
                     NTA_GMM,
-                    opacity=0.8,
+                    opacity=0.6,
                     stroked=True,
                     filled=True,
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]',
+                    pickable=True,
+                ),
+                pdk.Layer
+                    "TextLayer",
+                    NTA_GMM,
+                    get_text='ntaname'
                     pickable=True,
                 ),
             ],
