@@ -1,6 +1,7 @@
 from collections import namedtuple
 import altair as alt
 import math
+import geopandas as gpd
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -10,7 +11,6 @@ import os
 import SessionState
 from PIL import Image
 import pydeck as pdk
-import geojson
 
 def get_session_state(rando):
     session_state = SessionState.get(random_number=random.random(), nsamples='', 
@@ -62,7 +62,7 @@ def main():
     if session_state.pages == 'Clustering City Layouts':
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        NTA_GMM = geojson.load('data/manhattan_nta.geojson')
+        NTA_GMM = gpd.read_file('data/manhattan_nta.geojson')
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
