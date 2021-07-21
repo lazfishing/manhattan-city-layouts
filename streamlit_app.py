@@ -67,10 +67,10 @@ def main():
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
             initial_view_state=pdk.ViewState(
-                latitude=37.76,
-                longitude=-122.4,
+                latitude=40.7831,
+                longitude=-73.9712,
                 zoom=11,
-                pitch=50,
+                pitch=30,
             ),
 #             layers=[
 #                 pdk.Layer(
