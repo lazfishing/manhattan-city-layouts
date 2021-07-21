@@ -69,7 +69,7 @@ def main():
             initial_view_state=pdk.ViewState(
                 latitude=40.7831,
                 longitude=-73.9712,
-                zoom=11,
+                zoom=10.5,
                 pitch=35,
             ),
 #             layers=[
