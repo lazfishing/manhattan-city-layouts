@@ -10,6 +10,7 @@ import os
 import SessionState
 from PIL import Image
 import pydeck as pdk
+import geojson
 
 def get_session_state(rando):
     session_state = SessionState.get(random_number=random.random(), nsamples='', 
@@ -61,6 +62,8 @@ def main():
     if session_state.pages == 'Clustering City Layouts':
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
+        NTA_GMM = geojson.load('data/manhattan_nta.geojson')
+        
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
             initial_view_state=pdk.ViewState(
@@ -69,18 +72,14 @@ def main():
                 zoom=10.5,
                 pitch=35,
             ),
-#             layers=[
-#                 pdk.Layer(
-#                     'HexagonLayer',
-#                     data=df,
-#                     get_position='[lon, lat]',
-#                     radius=200,
-#                     elevation_scale=4,
-#                     elevation_range=[0, 1000],
-#                     pickable=True,
-#                     extruded=True,
-#                 ),
-#             ],
+            layers=[
+                pdk.Layer(
+                    'GMM',
+                    data=NTA_GMM,
+                    get_polygon='geometry',
+                    pickable=True
+                ),
+            ],
         ))
 
     ### Blending City Layouts ###
