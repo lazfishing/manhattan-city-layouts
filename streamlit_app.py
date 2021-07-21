@@ -62,7 +62,7 @@ def main():
     if session_state.pages == 'Clustering City Layouts':
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/15dd45bcbaeab93d184e3be2ac95eaab4b25ab5c/data/manhattan_nta.geojson'
+        NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson'
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
