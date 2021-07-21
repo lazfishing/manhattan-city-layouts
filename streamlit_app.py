@@ -84,7 +84,7 @@ def main():
                     pickable=True,
                 ),
             ],
-            tooltip={"html": "{ntaname}", "style": {"backgroundColor": "black", "color": "white", "font-size": "8px"} },
+            tooltip={"html": "{ntaname}", "style": {"backgroundColor": "black", "color": "white", "font-size": "12px"} },
         ))
 
     ### Blending City Layouts ###
