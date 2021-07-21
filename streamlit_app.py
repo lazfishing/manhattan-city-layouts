@@ -66,8 +66,8 @@ def main():
 
         tooltip = {
             "html":
-                "<b>Name:</b> {} <br/>"
-                "<b>Rain:</b> {} mm<br/>",
+                "<b>Name:</b> {ntaname} <br/>"
+                "<b>Rain:</b> {gmm_pca} <br/>",
             "style": {
                 "backgroundColor": "steelblue",
                 "color": "black",
@@ -91,6 +91,8 @@ def main():
                     stroked=True,
                     filled=True,
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]'
+                    pickable=True,
+                    onClick=True,
                 ),
             ],
         ))
