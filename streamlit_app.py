@@ -66,6 +66,7 @@ def main():
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
+            tooltip={"html": "<b>Color Value:</b> {properties.gmm_pca_color}", "style": {"color": "white"}},
             initial_view_state=pdk.ViewState(
                 latitude=40.7831,
                 longitude=-73.9712,
@@ -82,7 +83,6 @@ def main():
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]'
                 ),
             ],
-            tooltip={"html": "<b>Color Value:</b> {properties.gmm_pca_color}", "style": {"color": "white"}},
         ))
 
     ### Blending City Layouts ###
