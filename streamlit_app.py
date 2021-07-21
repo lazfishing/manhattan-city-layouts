@@ -63,8 +63,7 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = 'data/manhattan_nta.geojson'
-#         NTA_GMM = NTA_GMM.to_crs('EPSG:4326')
-#         st.write(NTA_GMM)
+        st.write(NTA_GMM)
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
