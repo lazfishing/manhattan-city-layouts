@@ -66,7 +66,7 @@ def main():
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
-            tooltip={"html": "<b>Color Value:</b> {properties.gmm_pca_color}", "style": {"color": "white"}},
+            tooltip={"html": "<b>Color Value:</b> ", "style": {"color": "white"}},
             initial_view_state=pdk.ViewState(
                 latitude=40.7831,
                 longitude=-73.9712,
