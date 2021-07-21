@@ -77,7 +77,7 @@ def main():
                 pdk.Layer(
                     'GMMLayer',
                     data=NTA_GMM,
-                    id='geojson'
+                    id='geojson',
                     get_polygon='geometry',
                     get_fill_color="gmm_pca",
                     auto_highlight=True,
