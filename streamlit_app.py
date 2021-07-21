@@ -75,7 +75,6 @@ def main():
 
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
-            tooltip=tooltip,
             initial_view_state=pdk.ViewState(
                 latitude=40.7831,
                 longitude=-73.9712,
@@ -99,6 +98,7 @@ def main():
                     pickable=True,
                 ),
             ],
+            tooltip=tooltip,
         ))
 
     ### Blending City Layouts ###
