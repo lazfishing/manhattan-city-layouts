@@ -79,7 +79,7 @@ def main():
                     'GMMLayer',
                     data=NTA_GMM,
                     get_polygon='geometry',
-                    get_fill_color="fill_color",
+                    get_fill_color="gmm_pca",
                     auto_highlight=True,
                     pickable=True
                 ),
