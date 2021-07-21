@@ -63,10 +63,20 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson'
-        
+
+        tooltip = {
+            "html":
+                "<b>Name:</b> {} <br/>"
+                "<b>Rain:</b> {} mm<br/>",
+            "style": {
+                "backgroundColor": "steelblue",
+                "color": "black",
+            }
+        }
+
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
-            tooltip={"html": "<b>Color Value:</b> ", "style": {"color": "white"}},
+            tooltip=tooltip,
             initial_view_state=pdk.ViewState(
                 latitude=40.7831,
                 longitude=-73.9712,
