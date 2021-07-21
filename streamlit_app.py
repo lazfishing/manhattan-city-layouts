@@ -66,8 +66,8 @@ def main():
 
         tooltip = {
             "html":
-                "<b>Name:</b> ${properties.ntaname} <br/>"
-                "<b>Rain:</b> ${properties.gmm_pca} <br/>",
+                "<b>Name:</b> {ntaname} <br/>"
+                "<b>Rain:</b> {gmm_pca} <br/>",
             "style": {
                 "backgroundColor": "steelblue",
                 "color": "black",
