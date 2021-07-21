@@ -79,7 +79,7 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color='[255, 255, gmm_pca_color]',
+                    get_fill_color='[255, 255, properties.gmm_pca_color]',
                     get_line_color=[255, 255, 255],
                 ),
             ],
