@@ -77,7 +77,7 @@ def main():
                     'GMM',
                     data=NTA_GMM,
                     get_polygon='geometry',
-                    get_fill_color="fill_color"
+                    get_fill_color="fill_color",
                     auto_highlight=True,
                     pickable=True
                 ),
