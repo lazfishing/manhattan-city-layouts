@@ -92,7 +92,7 @@ def main():
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]',
                     pickable=True,
                 ),
-                pdk.Layer
+                pdk.Layer(
                     "TextLayer",
                     NTA_GMM,
                     get_text='ntaname',
