@@ -65,9 +65,12 @@ def main():
         NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson'
 
         tooltip = {
-            "text":
+            "html":
                 "Neighborhood: ${NTA_GMM.properties.ntaname}"
-#                 "City Style Metric: {gmm_pca}",
+            "style": {
+                "backgroundColor": "black",
+                "color": "white"
+            }
         }
 
         st.pydeck_chart(pdk.Deck(
