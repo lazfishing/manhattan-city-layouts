@@ -90,7 +90,7 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]'
+                    get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]',
                     pickable=True,
                     onClick=True,
                 ),
