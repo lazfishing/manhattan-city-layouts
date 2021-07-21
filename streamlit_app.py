@@ -70,7 +70,7 @@ def main():
                 latitude=40.7831,
                 longitude=-73.9712,
                 zoom=11,
-                pitch=30,
+                pitch=35,
             ),
 #             layers=[
 #                 pdk.Layer(
