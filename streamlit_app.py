@@ -64,15 +64,6 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson'
 
-        tooltip = {
-            "html":
-                "Neighborhood: {ntaname}",
-            "style": {
-                "backgroundColor": "black",
-                "color": "white"
-            }
-        }
-
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
             initial_view_state=pdk.ViewState(
@@ -91,14 +82,8 @@ def main():
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]',
                     pickable=True,
                 ),
-                pdk.Layer(
-                    "TextLayer",
-                    NTA_GMM,
-                    get_text='ntaname',
-                    pickable=True,
-                ),
             ],
-            tooltip=tooltip,
+            tooltip={"html": "Neighborhood: {ntaname}", "style": {"backgroundColor": "black", "color": "white"} },
         ))
 
     ### Blending City Layouts ###
