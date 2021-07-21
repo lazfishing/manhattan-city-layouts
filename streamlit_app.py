@@ -76,7 +76,7 @@ def main():
             layers=[
                 pdk.Layer(
                     'GMMLayer',
-                    data=NTA_GMM,
+                    NTA_GMM,
                     filled=True,
                     get_fill_color="gmm_pca"
                 ),
