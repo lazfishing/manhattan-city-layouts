@@ -79,24 +79,11 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color='ffefdc',
+                    get_fill_color=[255,255,125],
                     get_line_color=[255, 255, 255],
                 ),
             ],
         ))
-        
-        
-#                   0.2,'#ffefdc',
-#           0.4,'#f5c5ab',
-#           0.6,'#f1b093',
-#           0.8,'#e78662',
-#           1.0,'#e27149',
-#           1.2,'#d15e3d',
-#           1.4,'#b13925',
-#           1.6,'#a02619',
-#           1.8,'#7f0101',
-#           2.0,'#660202'
-
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
