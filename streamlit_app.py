@@ -66,7 +66,7 @@ def main():
 
         tooltip = {
             "html":
-                "Neighborhood: {gmmlayer.properties.ntaname}",
+                "Neighborhood: {ntaname}",
             "style": {
                 "backgroundColor": "black",
                 "color": "white"
@@ -86,13 +86,11 @@ def main():
                 pdk.Layer(
                     "GeoJsonLayer",
                     NTA_GMM,
-                    id=gmmlayer,
                     opacity=0.8,
                     stroked=True,
                     filled=True,
                     get_fill_color='[255, properties.gmm_pca_color, properties.gmm_pca_color]',
                     pickable=True,
-                    onClick=True,
                 ),
             ],
         ))
