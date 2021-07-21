@@ -63,7 +63,6 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/15dd45bcbaeab93d184e3be2ac95eaab4b25ab5c/data/manhattan_nta.geojson'
-        GMMColor = (gmm_pca - np.min(gmm_pca)) * 255 / (np.max(gmm_pca) - np.min(gmm_pca))
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
@@ -80,7 +79,7 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color="[255, 255, gmm_pca_color]",
+                    get_fill_color=[255, 255, 'gmm_pca_color'],
                     get_line_color=[255, 255, 255],
                 ),
             ],
