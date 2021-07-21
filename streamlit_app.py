@@ -65,9 +65,9 @@ def main():
         NTA_GMM = 'https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson'
 
         tooltip = {
-            "html":
+            "text":
                 "<b>Name:</b> {ntaname} <br/>"
-                "<b>Rain:</b> {colorValue} <br/>",
+                "<b>City Style Metric:</b> {gmm_pca} <br/>",
             "style": {
                 "backgroundColor": "steelblue",
                 "color": "black",
