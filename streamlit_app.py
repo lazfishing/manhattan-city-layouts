@@ -79,7 +79,7 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color='#ffefdc',
+                    get_fill_color='ffefdc',
                     get_line_color=[255, 255, 255],
                 ),
             ],
