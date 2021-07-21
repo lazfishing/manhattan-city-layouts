@@ -75,10 +75,16 @@ def main():
             ),
             layers=[
                 pdk.Layer(
-                    'GMMLayer',
+                    "GeoJsonLayer",
                     NTA_GMM,
+                    opacity=0.8,
+                    stroked=False,
                     filled=True,
-                    get_fill_color="gmm_pca"
+                    extruded=True,
+                    wireframe=True,
+#                     get_elevation="properties.valuePerSqm / 20",
+                    get_fill_color="[255, 255, gmm_pca * 255]",
+                    get_line_color=[255, 255, 255],
                 ),
             ],
         ))
