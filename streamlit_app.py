@@ -63,6 +63,7 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('data/manhattan_nta.geojson')
+        NTA_GMM = NTA_GMM.to_crs('4326')
         
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
@@ -74,7 +75,7 @@ def main():
             ),
             layers=[
                 pdk.Layer(
-                    'GMM',
+                    'GMMLayer',
                     data=NTA_GMM,
                     get_polygon='geometry',
                     get_fill_color="fill_color",
