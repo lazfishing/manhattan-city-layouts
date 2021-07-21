@@ -95,7 +95,7 @@ def main():
                 pdk.Layer
                     "TextLayer",
                     NTA_GMM,
-                    get_text='ntaname'
+                    get_text='ntaname',
                     pickable=True,
                 ),
             ],
