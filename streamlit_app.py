@@ -66,7 +66,7 @@ def main():
 
         tooltip = {
             "html":
-                "Neighborhood: ${NTA_GMM.properties.ntaname}"
+                "Neighborhood: ${NTA_GMM.properties.ntaname}",
             "style": {
                 "backgroundColor": "black",
                 "color": "white"
