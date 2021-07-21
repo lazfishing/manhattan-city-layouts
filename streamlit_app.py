@@ -63,7 +63,6 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
-        st.dataframe(NTA_GMM)
 
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
