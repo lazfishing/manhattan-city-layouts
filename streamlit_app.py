@@ -45,9 +45,7 @@ def main():
     rando = cacherando()
     session_state = get_session_state(rando)
     sep = '<|endoftext|>'
-    main_txt = """Manhattan City Layout Analysis"""
-    sub_txt = "2021 NYU CUSP Capstone Project"
-    display_app_header(main_txt,sub_txt,is_sidebar = False)
+    main_txt = """🏙 Manhattan City Layout Analysis"""
     manhattan_clusters = pd.read_csv('city_layouts_with_clustering.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
@@ -56,11 +54,13 @@ def main():
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
-        st.text("Introduction")
+        sub_txt = "2021 NYU CUSP Capstone Project"
+        display_app_header(main_txt,sub_txt,is_sidebar = False)
 
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
-        st.text("Clustering City Layouts")
+        sub_txt = "Clustering City Layouts"
+        display_app_header(main_txt,sub_txt,is_sidebar = False)
         st.pydeck_chart(pdk.Deck(
             map_style='mapbox://styles/mapbox/light-v9',
             initial_view_state=pdk.ViewState(
@@ -85,7 +85,8 @@ def main():
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
-        st.text("Blending City Layouts")
+        sub_txt = "Blending City Layouts"
+        display_app_header(main_txt,sub_txt,is_sidebar = False)
         nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
         nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
