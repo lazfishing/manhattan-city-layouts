@@ -66,7 +66,7 @@ def main():
 
         tooltip = {
             "text":
-                "Neighborhood: {ntaname}"
+                "Neighborhood: ${NTA_GMM.properties.ntaname}"
 #                 "City Style Metric: {gmm_pca}",
         }
 
