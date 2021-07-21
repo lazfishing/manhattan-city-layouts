@@ -80,7 +80,7 @@ def main():
                     opacity=0.8,
                     stroked=True,
                     filled=True,
-                    get_fill_color="gmm_pca",
+                    get_fill_color="[255, 255, (gmm_pca - np.min(gmm_pca)) / (np.max(gmm_pca) - np.min(gmm_pca))]",
                     get_line_color=[255, 255, 255],
                 ),
             ],
