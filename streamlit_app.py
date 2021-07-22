@@ -98,7 +98,7 @@ def main():
             ))
             
         with col2:
-            neighborhood = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
+            neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique()[:29])
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
