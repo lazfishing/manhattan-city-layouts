@@ -84,7 +84,15 @@ def main():
                     pickable=True,
                 ),
             ],
-            tooltip={"html": "{ntaname}: {gmm_pca}", "style": {"backgroundColor": "black", "color": "white", "font-size": "12px"} },
+            tooltip={
+                "html": 
+                    "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Deviation from Mean PCA Score: {deviation}", 
+                "style": {
+                    "backgroundColor": "black", 
+                    "color": "white", 
+                    "font-size": "12px"
+                } 
+            },
         ))
 
     ### Blending City Layouts ###
