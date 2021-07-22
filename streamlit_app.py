@@ -63,44 +63,49 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
-
-        st.pydeck_chart(pdk.Deck(
-            map_style='mapbox://styles/mapbox/light-v9',
-            initial_view_state=pdk.ViewState(
-                latitude=40.7831,
-                longitude=-73.9712,
-                zoom=10.5,
-                pitch=35,
-            ),
-            layers=[
-                pdk.Layer(
-                    "GeoJsonLayer",
-                    NTA_GMM,
-                    opacity=0.6,
-                    stroked=True,
-                    filled=True,
-                    get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
-                    auto_highlight=True,
-                    pickable=True,
+        col1, col2 = st.beta_columns(2)
+        
+        with col1:
+            st.pydeck_chart(pdk.Deck(
+                map_style='mapbox://styles/mapbox/light-v9',
+                initial_view_state=pdk.ViewState(
+                    latitude=40.7831,
+                    longitude=-73.9712,
+                    zoom=10.5,
+                    pitch=35,
                 ),
-            ],
-            tooltip={
-                "html": 
-                    "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
-                "style": {
-                    "backgroundColor": "black", 
-                    "color": "white", 
-                    "font-size": "12px"
-                } 
-            },
-        ))
+                layers=[
+                    pdk.Layer(
+                        "GeoJsonLayer",
+                        NTA_GMM,
+                        opacity=0.6,
+                        stroked=True,
+                        filled=True,
+                        get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+                        auto_highlight=True,
+                        pickable=True,
+                    ),
+                ],
+                tooltip={
+                    "html": 
+                        "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
+                    "style": {
+                        "backgroundColor": "black", 
+                        "color": "white", 
+                        "font-size": "12px"
+                    } 
+                },
+            ))
+            
+         with col2:
+            neighborhood = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        nta_A = st.selectbox('Neighbourhood A', options=manhattan_clusters.nta.unique()[:29])
-        nta_B = st.selectbox('Neighbourhood B', options=manhattan_clusters.nta.unique()[:29])
+        nta_A = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
+        nta_B = st.selectbox('Neighborhood B', options=manhattan_clusters.nta.unique()[:29])
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
         B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
