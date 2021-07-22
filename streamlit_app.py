@@ -79,7 +79,7 @@ def main():
                     opacity=0.6,
                     stroked=True,
                     filled=True,
-                    get_fill_color='[255, np.abs(gmm_pca_color-255), gmm_pca_color]',
+                    get_fill_color='[255, gmm_pca_color * 0.5, gmm_pca_color]',
                     auto_highlight=True,
                     pickable=True,
                 ),
