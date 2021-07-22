@@ -86,7 +86,7 @@ def main():
             ],
             tooltip={
                 "html": 
-                    "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Deviation from Mean PCA Score: {deviation}", 
+                    "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
                 "style": {
                     "backgroundColor": "black", 
                     "color": "white", 
