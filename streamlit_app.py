@@ -84,7 +84,7 @@ def main():
                     pickable=True,
                 ),
             ],
-            tooltip={"html": "{ntaname}: {gmm_pca.toFixed(2)}", "style": {"backgroundColor": "black", "color": "white", "font-size": "12px"} },
+            tooltip={"html": "{ntaname}: {gmm_pca}", "style": {"backgroundColor": "black", "color": "white", "font-size": "12px"} },
         ))
 
     ### Blending City Layouts ###
