@@ -35,12 +35,6 @@ def display_app_header(main_txt,sub_txt,is_sidebar = False):
 def display_side_panel_header(txt):
     st.sidebar.markdown(f'## {txt}')
 
-@st.cache(suppress_st_warning=True)
-def latent_interpolation(A,B,manhattan_clusters,latent_num):
-#    image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num))
-    image = Image.open('interpolation/test_{}.png'.format(latent_num))
-    return image
-
 def main():
     st.set_page_config(page_title='Manhattan City Layout Analysis') #layout='wide', initial_sidebar_state='auto'
     rando = cacherando()
@@ -110,7 +104,7 @@ def main():
         B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
         latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
-        image = latent_interpolation(A,B,manhattan_clusters,latent_num-1)
+        image = Image.open('interpolation/test_{}.png'.format(latent_num-1))
         st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
         
 if __name__ == "__main__":
