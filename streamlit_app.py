@@ -97,7 +97,7 @@ def main():
                 },
             ))
             
-         with col2:
+        with col2:
             neighborhood = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
 
     ### Blending City Layouts ###
