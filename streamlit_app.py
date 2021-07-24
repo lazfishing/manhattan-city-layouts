@@ -98,8 +98,11 @@ def main():
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        nta_A = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
-        nta_B = st.selectbox('Neighborhood B', options=manhattan_clusters.nta.unique()[:29])
+        col1, col2 = st.beta_columns(2)
+        with col1:
+            nta_A = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
+        with col2:
+            nta_B = st.selectbox('Neighborhood B', options=manhattan_clusters.nta.unique()[:29])
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
         B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
