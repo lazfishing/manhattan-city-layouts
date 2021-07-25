@@ -104,10 +104,10 @@ def main():
         with col2:
             nta_B = st.selectbox('Neighborhood B', options=['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village'])
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
-        B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
+        B = 28 - [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
         latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
-        image = Image.open('interpolation/test_{}.png'.format(latent_num-1))
+        image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num-1))
         st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
         
 if __name__ == "__main__":
