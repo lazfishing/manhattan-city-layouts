@@ -117,6 +117,7 @@ def main():
                 zoom=10.5,
                 pitch=35,
                 height=300,
+                bearing=90,
             ),
             layers=layers,
             tooltip=tooltip
