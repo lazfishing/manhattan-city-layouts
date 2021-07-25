@@ -57,6 +57,20 @@ def main():
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
+        display_side_panel_header("Configuration")
+        session_state.interpolate_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
+
+        GeoJsonLayer =  pdk.Layer(
+                        "GeoJsonLayer",
+                        NTA_GMM,
+                        opacity=0.6,
+                        stroked=True,
+                        filled=True,
+                        get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+                        auto_highlight=True,
+                        pickable=True,
+                    )
+        
         col1, col2 = st.beta_columns(2)
         
         with col1:
@@ -68,17 +82,17 @@ def main():
                     zoom=10.5,
                     pitch=35,
                 ),
-                layers=[
-                    pdk.Layer(
-                        "GeoJsonLayer",
-                        NTA_GMM,
-                        opacity=0.6,
-                        stroked=True,
-                        filled=True,
-                        get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
-                        auto_highlight=True,
-                        pickable=True,
-                    ),
+                layers=['GeoJsonLayer'
+#                     pdk.Layer(
+#                         "GeoJsonLayer",
+#                         NTA_GMM,
+#                         opacity=0.6,
+#                         stroked=True,
+#                         filled=True,
+#                         get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+#                         auto_highlight=True,
+#                         pickable=True,
+#                     ),
                 ],
                 tooltip={
                     "html": 
@@ -105,11 +119,6 @@ def main():
         nta_A = st.sidebar.selectbox('Neighborhood A', options=list1)
         nta_B = st.sidebar.selectbox('Neighborhood B', options=list2)
 
-#         col1, col2 = st.beta_columns(2)
-#         with col1:
-#             nta_A = st.selectbox('Neighborhood A', options=list1)
-#         with col2:
-#             nta_B = st.selectbox('Neighborhood B', options=list2)
         A = [1,4,5,6][list1.index(nta_A)]
         B = 28 - [19,21,25,28][list2.index(nta_B)]
         
