@@ -54,6 +54,8 @@ def main():
         
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
+        sub_txt = "Clustering City Layouts"
+        display_app_header(main_txt,sub_txt,is_sidebar = False)
         df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
         clusterSelect = st.multiselect('Select cluster(s) to view:',options=range(11),default=range(11))
         c = alt.Chart(df_tsne, height=600).mark_circle(size=10).encode(x='Dim1', y='Dim2',
