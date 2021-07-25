@@ -100,12 +100,12 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         display_side_panel_header("Configuration")
         session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation", options=['Overview','Individual transitions'])
+        list1 = ['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side']
+        list2 = ['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village']
         nta_A = st.sidebar.selectbox('Neighborhood A', options=list1)
         nta_B = st.sidebar.selectbox('Neighborhood B', options=list2)
 
-        col1, col2 = st.beta_columns(2)
-        list1 = ['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side']
-        list2 = ['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village']
+#         col1, col2 = st.beta_columns(2)
 #         with col1:
 #             nta_A = st.selectbox('Neighborhood A', options=list1)
 #         with col2:
