@@ -73,6 +73,8 @@ def main():
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
         session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
+        neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
+        nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
 
         PCALayer =  pdk.Layer(
             "GeoJsonLayer",
@@ -107,27 +109,24 @@ def main():
         else:
             layers = [DeviationLayer]
         
-        col1, col2 = st.beta_columns(2)
+        st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/light-v9',
+            initial_view_state=pdk.ViewState(
+                latitude=40.7701,
+                longitude=-73.9812,
+                zoom=10.5,
+                pitch=35,
+            ),
+            layers=layers,
+            tooltip=tooltip
+        ))
         
-        with col1:
-            st.pydeck_chart(pdk.Deck(
-                map_style='mapbox://styles/mapbox/light-v9',
-                initial_view_state=pdk.ViewState(
-                    latitude=40.7701,
-                    longitude=-73.9812,
-                    zoom=10.5,
-                    pitch=35,
-                ),
-                layers=layers,
-                tooltip=tooltip
-            ))
+        col1, col2, col3 = st.beta_columns(3)
             
-        with col2:
-            neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
-            nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
+        with col1:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-
+        
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
