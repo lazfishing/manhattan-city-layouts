@@ -135,7 +135,7 @@ def main():
             total_buildings = len(nta_profile)
             for i in range(11):
                 gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
-            gmm_count_df = pd.DataFrame(data=[list(range(11),gmm_count],columns=['cluster','layout count'])
+            gmm_count_df = pd.DataFrame(data=[list(range(11)),gmm_count],columns=['cluster','layout count'])
                 
             st.bar_chart(gmm_count_df)
                     
