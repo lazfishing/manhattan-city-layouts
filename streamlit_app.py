@@ -62,6 +62,7 @@ def main():
 
         GeoJsonLayer =  pdk.Layer(
                         "GeoJsonLayer",
+                        id='GeoJsonLayer',
                         NTA_GMM,
                         opacity=0.6,
                         stroked=True,
