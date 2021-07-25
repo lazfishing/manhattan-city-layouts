@@ -45,16 +45,27 @@ def main():
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering City Layouts','Blending City Layouts'])
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering City Layouts','Neighborhood Analysis','Blending City Layouts'])
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
         sub_txt = "2021 NYU CUSP Capstone Project"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-
+        
     ### Clustering City Layouts ###
     if session_state.pages == 'Clustering City Layouts':
-        sub_txt = "Clustering City Layouts"
+        df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
+        clusterSelect = st.multiselect('Select cluster(s) to view:',options=range(11),default=range(11))
+        c = alt.Chart(df_tsne, height=600).mark_circle(size=10).encode(x='Dim1', y='Dim2',
+                                                                color='cluster', 
+                                                                tooltip=['cluster','nta']).transform_filter(
+            alt.FieldOneOfPredicate(field='competitor', oneOf=clusterSelect))
+        st.altair_chart(c, use_container_width=True)
+
+
+    ### Neighborhood Analysis ###
+    if session_state.pages == 'Neighborhood Analysis':
+        sub_txt = "Neighborhood Analysis"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
