@@ -108,28 +108,31 @@ def main():
             layers = [PCALayer]
         else:
             layers = [DeviationLayer]
-        
-        st.pydeck_chart(pdk.Deck(
-            map_style='mapbox://styles/mapbox/light-v9',
-            initial_view_state=pdk.ViewState(
-                latitude=40.7791,
-                longitude=-73.9812,
-                zoom=10,
-                pitch=25,
-                height=300,
-                bearing=-20,
-            ),
-            layers=layers,
-            tooltip=tooltip
-        ))
-        
-        col1, col2 = st.beta_columns(2)
             
+        col1, col2 = st.beta_columns(2)
+        
         with col1:
+        
+            st.pydeck_chart(pdk.Deck(
+                map_style='mapbox://styles/mapbox/light-v9',
+                initial_view_state=pdk.ViewState(
+                    latitude=40.7791,
+                    longitude=-73.9812,
+                    zoom=10,
+                    pitch=35,
+                    height=300,
+                ),
+                layers=layers,
+                tooltip=tooltip
+            ))
+            
+        with col2: 
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-            
-        with col2:
+        
+        c2_1, col2_2 = st.beta_columns(2)
+                        
+        with col2_1:
             gmm_count = []
             nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
             total_buildings = len(nta_profile)
