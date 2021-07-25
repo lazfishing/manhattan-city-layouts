@@ -115,7 +115,7 @@ def main():
         
         if session_state.interpolate_setting == 'Overview':
             image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
-            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B), width=300)
+            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B), width=100)
             
         else:
             latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
