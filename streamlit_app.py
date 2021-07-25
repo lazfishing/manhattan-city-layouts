@@ -135,10 +135,16 @@ def main():
             total_buildings = len(nta_profile)
             for i in range(11):
                 gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
-            gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','layout count'])
-                
-            st.bar_chart(gmm_count_df['layout count'])
-                    
+            gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
+
+            c1 = alt.Chart(gmm_count_df).mark_bar().encode(
+                x='cluster',
+                y='%layouts',
+                title='Percentage breakdown of layouts by cluster',
+            )
+            
+            st.altair_chart(c1)
+                                
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
