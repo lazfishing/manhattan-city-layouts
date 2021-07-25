@@ -58,7 +58,7 @@ def main():
         clusterSelect = st.multiselect('Select cluster(s) to view:',options=range(11),default=range(11))
         c = alt.Chart(df_tsne, height=600).mark_circle(size=10).encode(x='Dim1', y='Dim2',
                                                                 color='cluster', 
-                                                                tooltip=['cluster','nta']).transform_filter(
+                                                                tooltip=['cluster']).transform_filter(
             alt.FieldOneOfPredicate(field='competitor', oneOf=clusterSelect))
         st.altair_chart(c, use_container_width=True)
 
