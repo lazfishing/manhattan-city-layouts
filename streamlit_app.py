@@ -73,7 +73,7 @@ def main():
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
         session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
-        neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
+        neighborhood = st.sidebar.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
         nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
 
         PCALayer =  pdk.Layer(
