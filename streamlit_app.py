@@ -43,7 +43,7 @@ def main():
     main_txt = """🏙 Manhattan City Layout Analysis"""
     manhattan_clusters = pd.read_csv('data/manhattan_city_layouts.csv',index_col=0)
     df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
-    df_tsne.cluster = [str(c) for c in df_tsne.cluster]
+    df_tsne.cluster = [str(int(c)) for c in df_tsne.cluster]
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
