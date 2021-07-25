@@ -123,7 +123,7 @@ def main():
             tooltip=tooltip
         ))
         
-        col1, col2, col3 = st.beta_columns(3)
+        col1, col2 = st.beta_columns(2)
             
         with col1:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
@@ -135,12 +135,10 @@ def main():
             total_buildings = len(nta_profile)
             for i in range(11):
                 gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
+            gmm_count_df = pd.DataFrame(gmm_count,columns=['cluster','layout count'])
                 
             st.bar_chart(gmm_count)
-            
-        with col3:
-            st.write("")
-        
+                    
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
