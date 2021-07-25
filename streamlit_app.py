@@ -76,7 +76,7 @@ def main():
             opacity=0.6,
             stroked=True,
             filled=True,
-            get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+            get_fill_color='[deviation * 0.9, deviation * 0.9, 255]',
             auto_highlight=True,
             pickable=True)
         
