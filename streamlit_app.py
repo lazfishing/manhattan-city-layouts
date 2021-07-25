@@ -108,10 +108,8 @@ def main():
             nta_A = st.selectbox('Neighborhood A', options=list1)
         with col2:
             nta_B = st.selectbox('Neighborhood B', options=list2)
-        a = [i for i, val in enumerate(list1==nta_A) if val][0]
-        b = [i for i, val in enumerate(list1==nta_B) if val][0]
-        A = [1,4,5,6][a]
-        B = 28 - [19,21,25,28][b]
+        A = [1,4,5,6][list1.index(nta_A)]
+        B = 28 - [19,21,25,28][list2.index(nta_B)]
         
         if session_state.interpolate_setting == 'Overview':
             image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
