@@ -58,9 +58,9 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
-        session_state.interpolate_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
+        session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
 
-        GeoJsonLayer =  pdk.Layer(
+        PCALayer =  pdk.Layer(
             "GeoJsonLayer",
             NTA_GMM,
             opacity=0.6,
@@ -69,6 +69,29 @@ def main():
             get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
             auto_highlight=True,
             pickable=True)
+        
+        DeviationLayer =  pdk.Layer(
+            "GeoJsonLayer",
+            NTA_GMM,
+            opacity=0.6,
+            stroked=True,
+            filled=True,
+            get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+            auto_highlight=True,
+            pickable=True)
+        
+        tooltip = {
+            "html": "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
+            "style": {
+                "backgroundColor": "black", 
+                "color": "white", 
+                "font-size": "12px"
+            }}
+        
+        if session_state.viz_setting == 'Top PCA component':
+            layers = [PCALayer]
+        else:
+            layers = [DeviationLayer]
         
         col1, col2 = st.beta_columns(2)
         
@@ -81,27 +104,8 @@ def main():
                     zoom=10.5,
                     pitch=35,
                 ),
-                layers=[GeoJsonLayer
-#                     pdk.Layer(
-#                         "GeoJsonLayer",
-#                         NTA_GMM,
-#                         opacity=0.6,
-#                         stroked=True,
-#                         filled=True,
-#                         get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
-#                         auto_highlight=True,
-#                         pickable=True,
-#                     ),
-                ],
-                tooltip={
-                    "html": 
-                        "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
-                    "style": {
-                        "backgroundColor": "black", 
-                        "color": "white", 
-                        "font-size": "12px"
-                    } 
-                },
+                layers=layers,
+                tooltip=tooltip
             ))
             
         with col2:
