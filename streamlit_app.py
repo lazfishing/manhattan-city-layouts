@@ -120,7 +120,6 @@ def main():
                     longitude=-73.9812,
                     zoom=10,
                     pitch=35,
-                    height=300,
                 ),
                 layers=layers,
                 tooltip=tooltip
@@ -130,7 +129,7 @@ def main():
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
         
-        c2_1, col2_2 = st.beta_columns(2)
+        col2_1, col2_2 = st.beta_columns(2)
                         
         with col2_1:
             gmm_count = []
