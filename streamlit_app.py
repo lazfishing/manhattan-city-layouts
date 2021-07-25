@@ -81,7 +81,7 @@ def main():
                     zoom=10.5,
                     pitch=35,
                 ),
-                layers=['GeoJsonLayer'
+                layers=[GeoJsonLayer
 #                     pdk.Layer(
 #                         "GeoJsonLayer",
 #                         NTA_GMM,
