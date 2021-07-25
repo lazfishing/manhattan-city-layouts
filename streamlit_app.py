@@ -121,8 +121,12 @@ def main():
             latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
             image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num-1))
             col1, col2, col3 = st.beta_columns(3)
+            with col1:
+                st.write("")
             with col2: 
                 st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B), width=400)
-
+            with col3:
+                st.write("")
+                
 if __name__ == "__main__":
     main()
