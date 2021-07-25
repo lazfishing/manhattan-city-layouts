@@ -137,7 +137,7 @@ def main():
                 gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
             gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
 
-            c1 = alt.Chart(gmm_count_df,width=10,title='Percentage breakdown of layouts by cluster').mark_bar().encode(
+            c1 = alt.Chart(gmm_count_df,title='Percentage breakdown of layouts by cluster').mark_bar(size=20).encode(
                 x='cluster',
                 y='%layouts',
                 tooltip=['%layouts'],
