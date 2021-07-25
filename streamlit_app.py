@@ -98,6 +98,9 @@ def main():
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
+        display_side_panel_header("Configuration")
+        session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation", options=['Overview','Individual transitions'])
+
         col1, col2 = st.beta_columns(2)
         with col1:
             nta_A = st.selectbox('Neighborhood A', options=['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side'])
@@ -106,9 +109,14 @@ def main():
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
         B = 27 - [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
-        latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
-        image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num-1))
-        st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
-        
+        if session_state.interpolate_setting == 'Overview':
+            image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
+            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
+            
+        else:
+            latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
+            image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num-1))
+            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
+
 if __name__ == "__main__":
     main()
