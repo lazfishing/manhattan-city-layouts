@@ -41,7 +41,7 @@ def main():
     session_state = get_session_state(rando)
     sep = '<|endoftext|>'
     main_txt = """🏙 Manhattan City Layout Analysis"""
-    manhattan_clusters = pd.read_csv('city_layouts_with_clustering.csv',index_col=0)
+    manhattan_clusters = pd.read_csv('data/manhattan_city_layouts.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
@@ -92,7 +92,7 @@ def main():
             ))
             
         with col2:
-            neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique()[:29])
+            neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
@@ -100,9 +100,9 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         col1, col2 = st.beta_columns(2)
         with col1:
-            nta_A = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique()[:29])
+            nta_A = st.selectbox('Neighborhood A', options=manhattan_clusters.nta.unique())
         with col2:
-            nta_B = st.selectbox('Neighborhood B', options=manhattan_clusters.nta.unique()[:29])
+            nta_B = st.selectbox('Neighborhood B', options=manhattan_clusters.nta.unique())
         A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
         B = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
         
