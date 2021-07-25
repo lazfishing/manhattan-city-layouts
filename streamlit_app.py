@@ -139,6 +139,7 @@ def main():
             st.bar_chart(gmm_count)
             
         with col3:
+            st.write("")
         
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
