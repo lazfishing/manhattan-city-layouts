@@ -115,9 +115,9 @@ def main():
                 latitude=40.7701,
                 longitude=-73.9812,
                 zoom=10.5,
-                pitch=35,
+                pitch=25,
                 height=300,
-                bearing=-10,
+                bearing=-25,
             ),
             layers=layers,
             tooltip=tooltip
