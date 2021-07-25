@@ -128,6 +128,17 @@ def main():
         with col1:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
+            
+        with col2:
+            gmm_count = []
+            nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
+            total_buildings = len(nta_profile)
+            for i in range(11):
+                gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
+                
+            st.bar_chart(gmm_count)
+            
+        with col3:
         
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
