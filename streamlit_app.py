@@ -102,12 +102,14 @@ def main():
         session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation", options=['Overview','Individual transitions'])
 
         col1, col2 = st.beta_columns(2)
+        list1 = ['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side']
+        list2 = ['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village']
         with col1:
-            nta_A = st.selectbox('Neighborhood A', options=['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side'])
+            nta_A = st.selectbox('Neighborhood A', options=list1)
         with col2:
-            nta_B = st.selectbox('Neighborhood B', options=['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village'])
-        A = [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_A) if val][0]
-        B = 27 - [i for i, val in enumerate(manhattan_clusters.nta.unique()==nta_B) if val][0]
+            nta_B = st.selectbox('Neighborhood B', options=list2)
+        A = [1,4,5,6][[i for i, val in enumerate(list1==nta_A) if val][0]]
+        B = 28 - [19,21,25,28][[i for i, val in enumerate(list1==nta_A) if val][0]]
         
         if session_state.interpolate_setting == 'Overview':
             image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
