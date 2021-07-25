@@ -110,7 +110,7 @@ def main():
             
         with col2:
             neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
-            nhood = [manhattan_clusters.nta.unique()].index(neighborhood)
+            nhood = manhattan_clusters.nta.unique().index(neighborhood)
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
 
