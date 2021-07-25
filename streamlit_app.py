@@ -61,16 +61,14 @@ def main():
         session_state.interpolate_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
 
         GeoJsonLayer =  pdk.Layer(
-                        "GeoJsonLayer",
-                        id='GeoJsonLayer',
-                        NTA_GMM,
-                        opacity=0.6,
-                        stroked=True,
-                        filled=True,
-                        get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
-                        auto_highlight=True,
-                        pickable=True,
-                    )
+            "GeoJsonLayer",
+            NTA_GMM,
+            opacity=0.6,
+            stroked=True,
+            filled=True,
+            get_fill_color='[gmm_pca_color * 0.9, gmm_pca_color * 0.9, 255]',
+            auto_highlight=True,
+            pickable=True)
         
         col1, col2 = st.beta_columns(2)
         
