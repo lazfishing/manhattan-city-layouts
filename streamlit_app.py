@@ -137,7 +137,7 @@ def main():
                 gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
             gmm_count_df = pd.DataFrame(gmm_count,columns=['cluster','layout count'])
                 
-            st.bar_chart(gmm_count)
+            st.bar_chart(gmm_count_df)
                     
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
