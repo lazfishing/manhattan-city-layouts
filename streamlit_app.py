@@ -76,7 +76,7 @@ def main():
             opacity=0.6,
             stroked=True,
             filled=True,
-            get_fill_color='[deviation * 255, deviation * 255, 255]',
+            get_fill_color='[150, deviation * 255, 255]',
             auto_highlight=True,
             pickable=True)
         
