@@ -58,7 +58,7 @@ def main():
     if session_state.pages == 'Clustering City Layouts':
         sub_txt = "Clustering City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        clusterSelect = st.multiselect('Select cluster(s) to view:',options=range(11),default=range(11))
+        clusterSelect = st.multiselect('Select cluster(s) to view:',options=[str(c) for c in range(11)],default=[str(c) for c in range(11)])
         c = alt.Chart(df_tsne, height=600).mark_circle(size=10).encode(x='Dim1', y='Dim2',
                                                                 color='cluster', 
                                                                 tooltip=['cluster']).transform_filter(
