@@ -137,7 +137,7 @@ def main():
             nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
             total_buildings = len(nta_profile)
             for i in range(11):
-                gmm_count.append(len(nta_profile[nta_profile.gmm==i])/total_buildings)
+                gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
             gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
 
             c1 = alt.Chart(gmm_count_df,title='Percentage breakdown of layouts by cluster').mark_bar(size=20).encode(
@@ -153,7 +153,7 @@ def main():
             total_man_buildings = len(manhattan_clusters)
             for i in range(11):
                 total_count = (len(manhattan_clusters[manhattan_clusters.gmm==i])/total_man_buildings)
-                dev_count.append(((len(nta_profile[nta_profile.gmm==i])/total_buildings)/total_count)-1)
+                dev_count.append(round(((len(nta_profile[nta_profile.gmm==i])/total_buildings)/total_count)-1,3))
                 
             dev_count_df = pd.DataFrame(data=zip(list(range(11)),dev_count),columns=['cluster','deviation'])
 
