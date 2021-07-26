@@ -146,7 +146,7 @@ def main():
                 tooltip=['%layouts'],
             )
             
-            st.altair_chart(c1)
+            st.altair_chart(c1,use_container_width=True)
             
         with col2_2:
             dev_count = []
@@ -164,7 +164,7 @@ def main():
                 tooltip=['deviation'],
             )
 
-            st.altair_chart(c2)
+            st.altair_chart(c2,use_container_width=True)
                                 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
