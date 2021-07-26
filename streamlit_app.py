@@ -145,7 +145,9 @@ def main():
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
                         
         with col1_2:
-            st.markdown("**Geometric profile of**<br/> **{}**".format(neighborhood))
+            st.markdown("**Geometric profile of {}**".format(neighborhood))
+            st.write(pd.DataFrame({'feature':['total area','total perimeter','average length:width ratio'],
+                                   'value':[1.511,15.2,0.58]}))
             
         st.write("")
         col2_1, col2_2 = st.beta_columns(2)
