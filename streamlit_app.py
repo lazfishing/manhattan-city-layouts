@@ -116,7 +116,7 @@ def main():
                 longitude=-73.9812,
                 zoom=10.2,
                 pitch=35,
-                height=300,
+                height=400,
             ),
             layers=layers,
             tooltip=tooltip
