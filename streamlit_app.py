@@ -60,8 +60,8 @@ def main():
         
         st.write("Using the AETree autoencoder, we extracted the latent features of each Manhattan city layout and \
                  performed dimensionality reduction using Principal Component Analysis (PCA). Using Gaussian Mixture Models (GMM) clustering algorithm, \
-                 we found 11 city layout typologies that describe the Manhattan style. \n
-                 The plot below is constructed using a t-distributed stochastic neighbor embedding (t-sne), \
+                 we found 11 city layout typologies that describe the Manhattan style.")
+        st.write("The plot below is constructed using a t-distributed stochastic neighbor embedding (t-sne), \
                  which faithfully represents the higher-dimensional layouts in a 2D-space.")
         
         clusterSelect = st.multiselect('Select cluster(s) to view:',options=[str(c) for c in range(11)],default=[str(c) for c in range(11)])
