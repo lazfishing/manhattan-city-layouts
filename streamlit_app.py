@@ -192,9 +192,9 @@ def main():
         sub_txt = "Blending City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         display_side_panel_header("Configuration")
-        st.sidebar.write("Settings for latent interpolation. Select 'Overview' to see the complete set of blending transitions. \
+        st.sidebar.write("Select 'Overview' to see the complete set of blending transitions. \
                         Select 'Individual transitions' to view each blended layout individually")
-        session_state.interpolate_setting = st.sidebar.radio(options=['Overview','Individual transitions'])
+        session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation",options=['Overview','Individual transitions'])
         list1 = ['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side']
         list2 = ['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village']
         nta_A = st.sidebar.selectbox('Neighborhood A', options=list1)
