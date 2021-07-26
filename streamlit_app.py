@@ -131,7 +131,8 @@ def main():
         with col1_2:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-        
+
+        st.write("")
         col2_1, col2_2 = st.beta_columns(2)
                         
         with col2_1:
