@@ -141,14 +141,14 @@ def main():
         col1_1, col1_2 = st.beta_columns(2)
         
         with col1_1:
-            image = Image.open('indiv_layouts/{}.png'.format(nhood))
-            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-                        
-        with col1_2:
             st.markdown("**Geometric profile of {}**".format(neighborhood))
             st.write(pd.DataFrame({'feature':['total area','total perimeter','average length:width ratio'],
                                    'value':[1.511,15.2,0.58]}))
             
+        with col1_2:
+            image = Image.open('indiv_layouts/{}.png'.format(nhood))
+            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
+                                    
         st.write("")
         col2_1, col2_2 = st.beta_columns(2)
                         
@@ -192,14 +192,19 @@ def main():
         sub_txt = "Blending City Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         display_side_panel_header("Configuration")
-        session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation", options=['Overview','Individual transitions'])
+        session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation. Select 'Overview' to see the complete set of\
+                                                            blending transitions. Select 'Individual transitions' to view each blended layout individually", 
+                                                             options=['Overview','Individual transitions'])
         list1 = ['SoHo-TriBeCa-Civic Center-Little Italy','East Harlem North','Clinton','Upper West Side']
         list2 = ['Chinatown','Battery Park City-Lower Manhattan','Manhattanville','Stuyvesant Town-Cooper Village']
         nta_A = st.sidebar.selectbox('Neighborhood A', options=list1)
         nta_B = st.sidebar.selectbox('Neighborhood B', options=list2)
-
         A = [1,4,5,6][list1.index(nta_A)]
         B = 28 - [19,21,25,28][list2.index(nta_B)]
+        
+        st.write("The linearly interpolated values of two distinct latent spaces can be decoded using AETree to generate new city layouts \
+                that bear resemblance to both original layouts. This could be useful for rapidly generating new urban parcellation concepts \
+                based on real-world city layouts, especially in redevelopment projects where the surrounding urban design is an important consideration.")
         
         if session_state.interpolate_setting == 'Overview':
             image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
