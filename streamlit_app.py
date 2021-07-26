@@ -61,7 +61,7 @@ def main():
         st.write("Using the AETree autoencoder, we extracted the latent features of each Manhattan city layout and \
                  performed dimensionality reduction using Principal Component Analysis (PCA). Using Gaussian Mixture Models (GMM) clustering algorithm, \
                  we found 11 city layout typologies that describe the Manhattan style.")
-        st.write("The plot below is constructed using a t-distributed stochastic neighbor embedding (t-sne), \
+        st.write("The plot below is constructed using a t-distributed stochastic neighbor embedding (t-SNE), \
                  which faithfully represents the higher-dimensional layouts in a 2D-space.")
         
         clusterSelect = st.multiselect('Select cluster(s) to view:',options=[str(c) for c in range(11)],default=[str(c) for c in range(11)])
@@ -80,6 +80,12 @@ def main():
         display_side_panel_header("Configuration")
         session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
 
+        st.write("Each Manhattan Neighborhood Tabulation Area (NTA) contains a tremendous diversity of city layouts - \
+                from grid patterns to coarse urban grains. We constructed a neighborhood geomtery 'profile' for each NTA, which considers the percentage \
+                composition of city layouts by GMM cluster (derived using the latent space of each city layout).")
+        st.write("A standard, objective metric for geometry profiling can be obtained by reducing this multi-dimensional profile using PCA. We can also \
+                calculate the deviation of each neighborhood profile from the city baseline. Both perspectives are visualized on this map.")
+        
         PCALayer =  pdk.Layer(
             "GeoJsonLayer",
             NTA_GMM,
