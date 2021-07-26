@@ -137,6 +137,7 @@ def main():
         
         with col1_1:
             st.subheader("Neighborhood Layout Analysis")
+            st.write("Take a closer look at the neighborhood geometry profile for each Manhattan NTA!")
             neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
             nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
             
