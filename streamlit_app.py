@@ -159,7 +159,7 @@ def main():
 
             c2 = alt.Chart(dev_count_df,title='Deviation from Manhattan style by cluster').mark_bar(size=20).encode(
                 x='cluster',
-                alt.Y('deviation',
+                y=alt.Y('deviation',
                       scale = alt.Scale(domain=(-1, 1))),
                 tooltip=['deviation'],
             )
