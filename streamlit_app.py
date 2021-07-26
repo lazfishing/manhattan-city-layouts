@@ -108,27 +108,22 @@ def main():
             layers = [PCALayer]
         else:
             layers = [DeviationLayer]
+                    
+        st.pydeck_chart(pdk.Deck(
+            map_style='mapbox://styles/mapbox/light-v9',
+            initial_view_state=pdk.ViewState(
+                latitude=40.7801,
+                longitude=-73.9812,
+                zoom=10.2,
+                pitch=35,
+                height=400,
+            ),
+            layers=layers,
+            tooltip=tooltip
+        ))
             
-        col1, col2 = st.beta_columns(2)
-        
-        with col1:
-        
-            st.pydeck_chart(pdk.Deck(
-                map_style='mapbox://styles/mapbox/light-v9',
-                initial_view_state=pdk.ViewState(
-                    latitude=40.7801,
-                    longitude=-73.9812,
-                    zoom=10.2,
-                    pitch=35,
-                    height=400,
-                ),
-                layers=layers,
-                tooltip=tooltip
-            ))
-            
-        with col2: 
-            image = Image.open('indiv_layouts/{}.png'.format(nhood))
-            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
+        image = Image.open('indiv_layouts/{}.png'.format(nhood))
+        st.image(image, caption='City layout extracted from {}'.format(neighborhood))
         
         col2_1, col2_2 = st.beta_columns(2)
                         
