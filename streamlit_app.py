@@ -135,17 +135,18 @@ def main():
         st.write("")
         st.subheader("Neighborhood Layout Analysis")
         st.write("Take a closer look at the neighborhood geometry profile for each Manhattan NTA.")
+        neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
+        nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
 
         col1_1, col1_2 = st.beta_columns(2)
         
         with col1_1:
-            neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
-            nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
-            
-        with col1_2:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-
+                        
+        with col1_2:
+            st.write("Geometric profile of {}".format(neighborhood))
+            
         st.write("")
         col2_1, col2_2 = st.beta_columns(2)
                         
