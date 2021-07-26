@@ -145,7 +145,7 @@ def main():
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
                         
         with col1_2:
-            st.markdown("**Geometric profile of\ {}**".format(neighborhood))
+            st.markdown("**Geometric profile of**\ **{}**".format(neighborhood))
             
         st.write("")
         col2_1, col2_2 = st.beta_columns(2)
