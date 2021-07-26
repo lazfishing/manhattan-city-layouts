@@ -113,7 +113,7 @@ def main():
             map_style='mapbox://styles/mapbox/light-v9',
             initial_view_state=pdk.ViewState(
                 latitude=40.7751,
-                longitude=-73.9812,
+                longitude=-73.9512,
                 zoom=10.2,
                 pitch=35,
                 height=400,
