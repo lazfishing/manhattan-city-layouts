@@ -150,9 +150,9 @@ def main():
             
         with col2_2:
             dev_count = []
-            total_buildings = len(manhattan_clusters)
+            total_man_buildings = len(manhattan_clusters)
             for i in range(11):
-                total_count = (len(manhattan_clusters[manhattan_clusters.gmm==i])/total_buildings)
+                total_count = (len(manhattan_clusters[manhattan_clusters.gmm==i])/total_man_buildings)
                 dev_count.append(((len(nta_profile[nta_profile.gmm==i])/total_buildings)/total_count)-1)
                 
             dev_count_df = pd.DataFrame(data=zip(list(range(11)),dev_count),columns=['cluster','deviation'])
