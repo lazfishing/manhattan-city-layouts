@@ -159,12 +159,12 @@ def main():
 
             c2 = alt.Chart(dev_count_df,title='Deviation from Manhattan style by cluster').mark_bar(size=20).encode(
                 x='cluster',
-                y='deviation',
+                alt.Y('deviation',
+                      scale = alt.Scale(domain=(-1, 1))),
                 tooltip=['deviation'],
             )
-            c2.configure_axisY(minExtent=-1.0,maxExtent=1.0)
+
             st.altair_chart(c2)
-            
                                 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
