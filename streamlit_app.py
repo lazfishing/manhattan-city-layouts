@@ -140,7 +140,7 @@ def main():
                 gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
             gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
 
-            c1 = alt.Chart(gmm_count_df,title='Percentage breakdown of layouts by cluster').mark_bar(size=20).encode(
+            c1 = alt.Chart(gmm_count_df,title='Percentage breakdown of layouts by cluster').mark_bar(size=10).encode(
                 x='cluster',
                 y='%layouts',
                 tooltip=['%layouts'],
@@ -157,7 +157,7 @@ def main():
                 
             dev_count_df = pd.DataFrame(data=zip(list(range(11)),dev_count),columns=['cluster','deviation'])
 
-            c2 = alt.Chart(dev_count_df,title='Deviation from Manhattan style by cluster').mark_bar(size=20).encode(
+            c2 = alt.Chart(dev_count_df,title='Deviation from Manhattan style by cluster').mark_bar(size=10).encode(
                 x='cluster',
                 y=alt.Y('deviation',
                       scale = alt.Scale(domain=(-1, 1))),
