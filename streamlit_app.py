@@ -72,9 +72,7 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
-        session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Top PCA component','Deviation from Manhattan style'])
-        neighborhood = st.sidebar.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
-        nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
+        session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
 
         PCALayer =  pdk.Layer(
             "GeoJsonLayer",
@@ -97,14 +95,14 @@ def main():
             pickable=True)
         
         tooltip = {
-            "html": "<b>{ntaname}</b> </br>PCA Component Score: {gmm_pca} </br>Normalized Deviation from Mean Score: {deviation}", 
+            "html": "<b>{ntaname}</b> </br>Standard metric for layout diversity: {gmm_pca} </br>Normalized deviation from Manhattan baseline: {deviation}", 
             "style": {
                 "backgroundColor": "black", 
                 "color": "white", 
                 "font-size": "12px"
             }}
         
-        if session_state.viz_setting == 'Top PCA component':
+        if session_state.viz_setting == 'Original metric for layout diversity':
             layers = [PCALayer]
         else:
             layers = [DeviationLayer]
@@ -121,9 +119,16 @@ def main():
             layers=layers,
             tooltip=tooltip
         ))
+        
+        col1_1, col1_2 = st.beta_columns(2)
+        
+        with col1_1:
+            neighborhood = st.sidebar.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
+            nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
             
-        image = Image.open('indiv_layouts/{}.png'.format(nhood))
-        st.image(image, caption='City layout extracted from {}'.format(neighborhood))
+        with col1_2:
+            image = Image.open('indiv_layouts/{}.png'.format(nhood))
+            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
         
         col2_1, col2_2 = st.beta_columns(2)
                         
