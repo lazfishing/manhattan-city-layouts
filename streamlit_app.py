@@ -162,7 +162,7 @@ def main():
                 y='deviation',
                 tooltip=['deviation'],
             )
-            
+            c2.configure_axisY(minExtent=-1.0,maxExtent=1.0)
             st.altair_chart(c2)
             
                                 
