@@ -72,7 +72,6 @@ def main():
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
-        session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
 
         PCALayer =  pdk.Layer(
             "GeoJsonLayer",
@@ -123,6 +122,7 @@ def main():
         col1_1, col1_2 = st.beta_columns(2)
         
         with col1_1:
+            session_state.viz_setting = st.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
             neighborhood = st.sidebar.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
             nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
             
