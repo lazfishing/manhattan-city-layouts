@@ -120,6 +120,7 @@ def main():
             tooltip=tooltip
         ))
         
+        st.write("")
         col1_1, col1_2 = st.beta_columns(2)
         
         with col1_1:
