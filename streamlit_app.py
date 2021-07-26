@@ -147,6 +147,24 @@ def main():
             )
             
             st.altair_chart(c1)
+            
+        with col2_2:
+            dev_count = []
+            total_buildings = len(manhattan_clusters)
+            for i in range(11):
+                total_count = (len(manhattan_clusters[manhattan_clusters.gmm==i])/total_buildings)
+                dev_count.append(((len(nta_profile[nta_profile.gmm==i])/total_buildings)/total_count)-1)
+                
+            dev_count_df = pd.DataFrame(data=zip(list(range(11)),dev_count),columns=['cluster','deviation'])
+
+            c2 = alt.Chart(dev_count_df,title='Deviation from Manhattan style by cluster').mark_bar(size=20).encode(
+                x='cluster',
+                y='deviation',
+                tooltip=['deviation'],
+            )
+            
+            st.altair_chart(c2)
+            
                                 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
