@@ -123,6 +123,7 @@ def main():
         col1_1, col1_2 = st.beta_columns(2)
         
         with col1_1:
+            st.subheader("Neighborhood Layout Analysis")
             neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
             nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
             
