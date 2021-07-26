@@ -13,8 +13,7 @@ from PIL import Image
 import pydeck as pdk
 
 def get_session_state(rando):
-    session_state = SessionState.get(random_number=random.random(), nsamples='', 
-                                     generated=pd.DataFrame(columns=['Competitor','Similarity','Channels','Target Keywords']))
+    session_state = SessionState.get(random_number=random.random())
     return session_state
 
 def cacherando():
