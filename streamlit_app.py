@@ -148,6 +148,7 @@ def main():
                               index = ['area','perimeter','avg length:width','std length:width','range length:width']))
                                                         
         st.write("")
+        st.write("")
         col1, col2 = st.beta_columns([3,2])
             
         with col1:
