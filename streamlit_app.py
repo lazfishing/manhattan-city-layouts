@@ -144,25 +144,7 @@ def main():
                                'min':[1.511,15.2,0.58,0.18,0.88],
                                'max':[1.511,15.2,0.58,0.18,0.88]},
                               index = ['area','perimeter','avg length:width','std length:width','range length:width']))
-                                                
-        st.write("")
-                        
-        gmm_count = []
-        nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
-        total_buildings = len(nta_profile)
-        for i in range(11):
-            gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
-        gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
-
-        c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=20).encode(
-            x='cluster',
-            y=alt.Y('%layouts',
-                    scale = alt.Scale(domain=(0,0.35))),
-            tooltip=['%layouts'],
-        )
-
-        st.altair_chart(c1,use_container_width=True)
-        
+                                                        
         st.write("")
         col1, col2 = st.beta_columns([3,2])
             
@@ -187,7 +169,24 @@ def main():
         with col2:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-                                
+
+        st.write("")
+        gmm_count = []
+        nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
+        total_buildings = len(nta_profile)
+        for i in range(11):
+            gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
+        gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
+
+        c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=20).encode(
+            x='cluster',
+            y=alt.Y('%layouts',
+                    scale = alt.Scale(domain=(0,0.35))),
+            tooltip=['%layouts'],
+        )
+
+        st.altair_chart(c1,use_container_width=True)
+
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
         sub_txt = "Blending City Layouts"
