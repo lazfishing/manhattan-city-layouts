@@ -142,7 +142,7 @@ def main():
         
         with col1_1:
             st.markdown("**Geometric profile of {}**".format(neighborhood))
-            st.write(pd.DataFrame({'feature':['area','perimeter','avg length:width','std length:width','range length:width'],
+            st.write(pd.DataFrame({'index':['area','perimeter','avg length:width','std length:width','range length:width'],
                                    'mean':[1.511,15.2,0.58,0.18,0.88],
                                    'std':[1.511,15.2,0.58,0.18,0.88],
                                    'min':[1.511,15.2,0.58,0.18,0.88],
