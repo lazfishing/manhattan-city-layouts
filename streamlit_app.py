@@ -138,7 +138,7 @@ def main():
         neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
         nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
 
-        col1_1, col1_2 = st.beta_columns([3,2])
+        col1_1, col1_2 = st.beta_columns([4,1])
         
         with col1_1:
             st.markdown("**Geometric profile of {}**".format(neighborhood))
