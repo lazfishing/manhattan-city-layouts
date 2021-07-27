@@ -137,6 +137,7 @@ def main():
         st.write("Take a closer look at the neighborhood geometry profile for each Manhattan NTA.")
         neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
         nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
+        nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
         
         st.markdown("**Geometric profile of {}**".format(neighborhood))
         st.write(pd.DataFrame({'mean':[1.511,15.2,0.58,0.18,0.88],
@@ -172,7 +173,6 @@ def main():
 
         st.write("")
         gmm_count = []
-        nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
         total_buildings = len(nta_profile)
         for i in range(11):
             gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
