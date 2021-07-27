@@ -137,42 +137,36 @@ def main():
         st.write("Take a closer look at the neighborhood geometry profile for each Manhattan NTA.")
         neighborhood = st.selectbox('Select a neighborhood to view', options=manhattan_clusters.nta.unique())
         nhood = list(manhattan_clusters.nta.unique()).index(neighborhood)
-
-        col1_1, col1_2 = st.beta_columns([4,1])
         
-        with col1_1:
-            st.markdown("**Geometric profile of {}**".format(neighborhood))
-            st.write(pd.DataFrame({'mean':[1.511,15.2,0.58,0.18,0.88],
-                                   'std':[1.511,15.2,0.58,0.18,0.88],
-                                   'min':[1.511,15.2,0.58,0.18,0.88],
-                                   'max':[1.511,15.2,0.58,0.18,0.88]},
-                                  index = ['area','perimeter','avg length:width','std length:width','range length:width']))
-            
-        with col1_2:
-            image = Image.open('indiv_layouts/{}.png'.format(nhood))
-            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
-                                    
+        st.markdown("**Geometric profile of {}**".format(neighborhood))
+        st.write(pd.DataFrame({'mean':[1.511,15.2,0.58,0.18,0.88],
+                               'std':[1.511,15.2,0.58,0.18,0.88],
+                               'min':[1.511,15.2,0.58,0.18,0.88],
+                               'max':[1.511,15.2,0.58,0.18,0.88]},
+                              index = ['area','perimeter','avg length:width','std length:width','range length:width']))
+                                                
         st.write("")
-        col2_1, col2_2 = st.beta_columns(2)
                         
-        with col2_1:
-            gmm_count = []
-            nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
-            total_buildings = len(nta_profile)
-            for i in range(11):
-                gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
-            gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
+        gmm_count = []
+        nta_profile = manhattan_clusters[manhattan_clusters.nta==neighborhood]
+        total_buildings = len(nta_profile)
+        for i in range(11):
+            gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
+        gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
 
-            c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=12).encode(
-                x='cluster',
-                y=alt.Y('%layouts',
-                        scale = alt.Scale(domain=(0,0.35))),
-                tooltip=['%layouts'],
-            )
+        c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=12).encode(
+            x='cluster',
+            y=alt.Y('%layouts',
+                    scale = alt.Scale(domain=(0,0.35))),
+            tooltip=['%layouts'],
+        )
+
+        st.altair_chart(c1,use_container_width=True)
+        
+        st.write("")
+        col1_1, col1_2 = st.beta_columns([3,2])
             
-            st.altair_chart(c1,use_container_width=True)
-            
-        with col2_2:
+        with col1_1:
             dev_count = []
             total_man_buildings = len(manhattan_clusters)
             for i in range(11):
@@ -189,6 +183,10 @@ def main():
             )
 
             st.altair_chart(c2,use_container_width=True)
+            
+        with col1_2:
+            image = Image.open('indiv_layouts/{}.png'.format(nhood))
+            st.image(image, caption='City layout extracted from {}'.format(neighborhood))
                                 
     ### Blending City Layouts ###
     if session_state.pages == 'Blending City Layouts':
