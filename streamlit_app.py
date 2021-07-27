@@ -154,7 +154,7 @@ def main():
             gmm_count.append(round(len(nta_profile[nta_profile.gmm==i])/total_buildings,3))
         gmm_count_df = pd.DataFrame(data=zip(list(range(11)),gmm_count),columns=['cluster','%layouts'])
 
-        c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=12).encode(
+        c1 = alt.Chart(gmm_count_df,title='Percentage composition by cluster').mark_bar(size=20).encode(
             x='cluster',
             y=alt.Y('%layouts',
                     scale = alt.Scale(domain=(0,0.35))),
@@ -164,9 +164,9 @@ def main():
         st.altair_chart(c1,use_container_width=True)
         
         st.write("")
-        col1_1, col1_2 = st.beta_columns([3,2])
+        col1, col2 = st.beta_columns([3,2])
             
-        with col1_1:
+        with col1:
             dev_count = []
             total_man_buildings = len(manhattan_clusters)
             for i in range(11):
@@ -184,7 +184,7 @@ def main():
 
             st.altair_chart(c2,use_container_width=True)
             
-        with col1_2:
+        with col2:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
             st.image(image, caption='City layout extracted from {}'.format(neighborhood))
                                 
