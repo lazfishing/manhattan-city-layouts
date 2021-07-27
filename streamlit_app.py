@@ -143,7 +143,10 @@ def main():
         with col1_1:
             st.markdown("**Geometric profile of {}**".format(neighborhood))
             st.write(pd.DataFrame({'feature':['total area','total perimeter','average length:width ratio'],
-                                   'value':[1.511,15.2,0.58]}))
+                                   'mean':[1.511,15.2,0.58],
+                                   'std':[1.511,15.2,0.58],
+                                   'min':[1.511,15.2,0.58],
+                                   'max':[1.511,15.2,0.58]}))
             
         with col1_2:
             image = Image.open('indiv_layouts/{}.png'.format(nhood))
