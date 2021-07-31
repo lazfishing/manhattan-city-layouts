@@ -85,7 +85,7 @@ def main():
     if session_state.pages == 'Neighborhood Analysis':
         sub_txt = "Neighborhood Analysis"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
-        NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/streamlit-example/master/data/manhattan_nta.geojson')
+        NTA_GMM = gpd.read_file('https://raw.githubusercontent.com/lazfishing/manhattan-city-layouts/master/data/manhattan_nta.geojson')
         display_side_panel_header("Configuration")
         session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
 
