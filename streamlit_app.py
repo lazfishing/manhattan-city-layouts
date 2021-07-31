@@ -101,7 +101,7 @@ def main():
             opacity=0.6,
             stroked=True,
             filled=True,
-            get_fill_color='[gmm_pca_color * 0.5 * 200, gmm_pca_color * 0.9 * 255, gmm_pca_color * 0.7 * 200]',
+            get_fill_color='[gmm_pca_color * 0.5 * 200 + 50, gmm_pca_color * 0.9 * 255, gmm_pca_color * 0.7 * 200]',
             auto_highlight=True,
             pickable=True)
         
