@@ -88,6 +88,7 @@ def main():
                 likely represent unique urban layout typologies that define the Manhattan cityscape.")
         st.write(geoCluster.iloc[:,:7])
         
+        st.write("")
         st.write("Based on these geometry features, we can assign descriptive labels to each cluster which are key considerations for urban planning.")
         """
         * **Building Density**: proportion of layout covered by building footprints
