@@ -88,7 +88,12 @@ def main():
                 likely represent unique urban layout typologies that define the Manhattan cityscape.")
         st.write(geoCluster.iloc[:,:7])
         
-        st.markdown("Based on these geometry features, we can assign descriptive labels to each cluster. * Building Density * Building Regularity")
+        st.write("Based on these geometry features, we can assign descriptive labels to each cluster.")
+        """
+        * Building Density
+        * Building Regularity
+        * Evenness
+        """
         st.write(geoCluster.iloc[:,7:])
 
 
