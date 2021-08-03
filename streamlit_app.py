@@ -44,6 +44,7 @@ def main():
     df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
     df_tsne.cluster = [str(int(c)) for c in df_tsne.cluster]
     geoNTA = pd.read_csv('data/geoNTA.csv',index_col=0)
+    geoCluster = pd.read_csv('data/geoCluster.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
@@ -80,6 +81,9 @@ def main():
                                                                 tooltip=['cluster']).transform_filter(
             alt.FieldOneOfPredicate(field='cluster', oneOf=clusterSelect))
         st.altair_chart(c, use_container_width=True)
+        
+        # cluster geometry features
+        st.write(geoCluster)
 
 
     ### Neighborhood Analysis ###
