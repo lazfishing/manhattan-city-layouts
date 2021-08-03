@@ -88,11 +88,11 @@ def main():
                 likely represent unique urban layout typologies that define the Manhattan cityscape.")
         st.write(geoCluster.iloc[:,:7])
         
-        st.write("Based on these geometry features, we can assign descriptive labels to each cluster.")
+        st.write("Based on these geometry features, we can assign descriptive labels to each cluster which are key considerations for urban planning.")
         """
-        * *Building Density*
-        * Building Regularity
-        * Evenness
+        * **Building Density**: proportion of layout covered by building footprints
+        * **Building Regularity**: average elongation of buildings, or length:width ratio
+        * **Evenness**: size and shape similarity of buildings
         """
         st.write(geoCluster.iloc[:,7:])
 
