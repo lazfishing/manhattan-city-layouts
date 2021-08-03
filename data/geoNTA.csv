@@ -1,4 +1,4 @@
-nta,building footprint area,perimeter length,standard deviation of footprint area,standard deviation of perimeter length,average length:width ratio,average building rotation,standard deviation of building rotation
+nta,area,perimeter,std. dev. of area,std. dev. of perimeter,avg length:width ratio,avg building rotation,std. dev. of building rotation
 Battery Park City-Lower Manhattan,0.21454593808787348,10.404705536605677,0.0077133140278908266,0.13738550993243598,1.1380303977865882,-0.43916111964495835,0.047174915429905144
 Central Harlem North-Polo Grounds,0.21243846570572922,10.38915444985487,0.00745012649948267,0.1350870190453679,1.1294835500458842,-0.425802856513926,0.04345734326842476
 Central Harlem South,0.21469216119267157,10.464430797054149,0.007489716948943509,0.13534305008647735,1.1129648631485636,-0.4139248594019844,0.048526140112259024
