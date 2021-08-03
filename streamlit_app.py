@@ -48,7 +48,7 @@ def main():
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering Urban Layouts','Neighborhood Analysis','Generating Composite Urban Layouts'])
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Classifying Urban Layout Typologies','Neighborhood Analysis','Generating Composite Urban Layouts'])
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
@@ -64,9 +64,9 @@ def main():
                 deep neural networks. We show how their encoded latent features can be used in downstream urban planning applications, including \
                 neigborhood analysis and generating composite urban layouts.")
         
-    ### Clustering Urban Layouts ###
-    if session_state.pages == 'Clustering Urban Layouts':
-        sub_txt = "Clustering Urban Layouts"
+    ### Classifying Urban Layout Typologies ###
+    if session_state.pages == 'Classifying Urban Layout Typologies':
+        sub_txt = "Classifying Urban Layout Typologies"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         
         st.write("Using the AETree autoencoder, we extracted the latent features of each Manhattan urban layout and \
