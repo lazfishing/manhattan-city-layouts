@@ -48,7 +48,7 @@ def main():
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Classifying Urban Layout Typologies','Neighborhood Analysis','Generating Composite Urban Layouts'])
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Classifying Urban Layout Typologies','Neighborhood Analysis','Generating Urban Layouts'])
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
@@ -204,8 +204,8 @@ def main():
         st.altair_chart(c1,use_container_width=True)
 
     ### Blending Urban Layouts ###
-    if session_state.pages == 'Generating Composite Urban Layouts':
-        sub_txt = "Generating Composite Urban Layouts"
+    if session_state.pages == 'Generating Urban Layouts':
+        sub_txt = "Generating Urban Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         display_side_panel_header("Configuration")
         session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation",options=['Overview','Individual transitions'],
