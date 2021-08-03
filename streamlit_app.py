@@ -66,6 +66,7 @@ def main():
         
     ### Classifying Urban Layout Typologies ###
     if session_state.pages == 'Classifying Urban Layout Typologies':
+        st.header('hello',anchor='hello')
         sub_txt = "Classifying Urban Layout Typologies"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         
