@@ -90,7 +90,7 @@ def main():
         
         st.write("Based on these geometry features, we can assign descriptive labels to each cluster.")
         """
-        * Building Density
+        * *Building Density*
         * Building Regularity
         * Evenness
         """
