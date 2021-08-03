@@ -35,11 +35,11 @@ def display_side_panel_header(txt):
     st.sidebar.markdown(f'## {txt}')
 
 def main():
-    st.set_page_config(page_title='Manhattan City Layout Analysis') #layout='wide', initial_sidebar_state='auto'
+    st.set_page_config(page_title='Manhattan Urban Layout Analysis') #layout='wide', initial_sidebar_state='auto'
     rando = cacherando()
     session_state = get_session_state(rando)
     sep = '<|endoftext|>'
-    main_txt = """🏙 Manhattan City Layout Analysis"""
+    main_txt = """🏙 Manhattan Urban Layout Analysis"""
     manhattan_clusters = pd.read_csv('data/manhattan_city_layouts.csv',index_col=0)
     df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
     df_tsne.cluster = [str(int(c)) for c in df_tsne.cluster]
@@ -48,30 +48,30 @@ def main():
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering City Layouts','Neighborhood Analysis','Blending City Layouts'])
+    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Clustering Urban Layouts','Neighborhood Analysis','Generating Composite Urban Layouts'])
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
         sub_txt = "2021 NYU CUSP Capstone Project"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         
-        st.write("City layouts - or urban parcellations - are incredibly diverse and complex. Simple metrics like building footprint area \
+        st.write("Urban layouts are incredibly diverse and complex. Simple metrics like building footprint area \
                 are incomplete in describing the higher-dimensional complexity and spatial hierarchy of these layouts. Other design language, \
-                like 'urban grain' or 'morphology', are qualitative. Consensus on describing city layouts or classifying them into meaningful \
+                like 'urban grain' or 'morphology', are qualitative. Consensus on describing urban layouts or classifying them into meaningful \
                 urban typologies is hard to come by.")
 
-        st.write("This project is an attempt to describe city layouts in a standardized, objective way by encoding their spatial structure using \
+        st.write("This project is an attempt to describe urban layouts in a standardized, objective way by encoding their spatial structure using \
                 deep neural networks. We show how their encoded latent features can be used in downstream urban planning applications, including \
-                neigborhood analysis and generating composite city layouts.")
+                neigborhood analysis and generating composite urban layouts.")
         
-    ### Clustering City Layouts ###
-    if session_state.pages == 'Clustering City Layouts':
-        sub_txt = "Clustering City Layouts"
+    ### Clustering Urban Layouts ###
+    if session_state.pages == 'Clustering Urban Layouts':
+        sub_txt = "Clustering Urban Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         
-        st.write("Using the AETree autoencoder, we extracted the latent features of each Manhattan city layout and \
+        st.write("Using the AETree autoencoder, we extracted the latent features of each Manhattan urban layout and \
                  performed dimensionality reduction using Principal Component Analysis (PCA). Using Gaussian Mixture Models (GMM) clustering algorithm, \
-                 we found 11 city layout typologies that describe the Manhattan style.")
+                 we found 11 urban layout typologies that describe the Manhattan style.")
         st.write("The plot below is constructed using a t-distributed stochastic neighbor embedding (t-SNE), \
                  which faithfully represents the higher-dimensional layouts in a 2D-space.")
         
@@ -83,6 +83,9 @@ def main():
         st.altair_chart(c, use_container_width=True)
         
         # cluster geometry features
+        st.subheader("Geometric statistics")
+        st.write("Geometric statistics were tabulated for each cluster, revealing that the clusters \
+                likely represent unique urban layout typologies that define the Manhattan cityscape.")
         st.write(geoCluster)
 
 
@@ -94,9 +97,9 @@ def main():
         display_side_panel_header("Configuration")
         session_state.viz_setting = st.sidebar.radio("Settings for visualization", options=['Original metric for layout diversity','Deviation from Manhattan baseline'])
 
-        st.write("Each Manhattan Neighborhood Tabulation Area (NTA) contains a tremendous diversity of city layouts - \
+        st.write("Each Manhattan Neighborhood Tabulation Area (NTA) contains a tremendous diversity of urban layouts - \
                 from grid patterns to coarse urban grains. We constructed a neighborhood geomtery 'profile' for each NTA, which considers the percentage \
-                composition of city layouts by GMM cluster (derived using the latent space of each city layout).")
+                composition of urban layouts by GMM cluster (derived using the latent space of each urban layout).")
         st.write("A standard, objective metric for geometry profiling can be obtained by reducing this multi-dimensional profile using PCA. We can also \
                 calculate the deviation of each neighborhood profile from the city baseline. Both perspectives are visualized on this map.")
         
@@ -200,9 +203,9 @@ def main():
 
         st.altair_chart(c1,use_container_width=True)
 
-    ### Blending City Layouts ###
-    if session_state.pages == 'Blending City Layouts':
-        sub_txt = "Blending City Layouts"
+    ### Blending Urban Layouts ###
+    if session_state.pages == 'Generating Composite Urban Layouts':
+        sub_txt = "Generating Composite Urban Layouts"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         display_side_panel_header("Configuration")
         session_state.interpolate_setting = st.sidebar.radio("Settings for latent interpolation",options=['Overview','Individual transitions'],
@@ -215,18 +218,18 @@ def main():
         A = [1,4,5,6][list1.index(nta_A)]
         B = 28 - [19,21,25,28][list2.index(nta_B)]
         
-        st.write("The linearly interpolated values of two distinct latent spaces can be decoded using AETree to generate new city layouts \
-                that bear resemblance to both original layouts. This could be useful for rapidly generating new urban parcellation concepts \
-                based on real-world city layouts, especially in redevelopment projects where the surrounding urban design is an important consideration.")
+        st.write("The linearly interpolated values of two distinct latent spaces can be decoded using AETree to generate new urban layouts \
+                that bear resemblance to both original layouts. This could be useful for rapidly generating new urban designs \
+                based on real-world urban layouts, especially in redevelopment projects where the surrounding urban design is an important consideration.")
         
         if session_state.interpolate_setting == 'Overview':
             image = Image.open('set_interpolate/{}_{}.png'.format(A,B))
-            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
+            st.image(image, caption='Blending of {} and {} urban layouts'.format(nta_A,nta_B))
             
         else:
             latent_num = st.slider('Drag the slider to see blending! Please be patient while the layouts load...',1,12)
             image = Image.open('interpolation/{}_{}_{}.png'.format(A,B,latent_num-1))
-            st.image(image, caption='Blending of {} and {} city layouts'.format(nta_A,nta_B))
+            st.image(image, caption='Blending of {} and {} urban layouts'.format(nta_A,nta_B))
                 
 if __name__ == "__main__":
     main()
