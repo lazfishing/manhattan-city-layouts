@@ -86,7 +86,12 @@ def main():
         st.subheader("Geometric statistics")
         st.write("Geometric statistics were tabulated for each cluster, revealing that the clusters \
                 likely represent unique urban layout typologies that define the Manhattan cityscape.")
-        st.write(geoCluster)
+        st.write(geoCluster.iloc[:,:7])
+        
+        st.markdown("Based on these geometry features, we can assign descriptive labels to each cluster. \
+                    * Building Density \
+                    * Building Regularity")
+        st.write(geoCluster.iloc[:,7:])
 
 
     ### Neighborhood Analysis ###
