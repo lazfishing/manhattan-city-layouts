@@ -43,6 +43,7 @@ def main():
     manhattan_clusters = pd.read_csv('data/manhattan_city_layouts.csv',index_col=0)
     df_tsne = pd.read_csv('data/city_tsne.csv',index_col=0)
     df_tsne.cluster = [str(int(c)) for c in df_tsne.cluster]
+    geoNTA = pd.read_csv('data/geoNTA.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
     display_side_panel_header("Menu")
@@ -150,12 +151,9 @@ def main():
         total_buildings = len(nta_profile)
 
         st.markdown("**Geometric profile of {}**".format(neighborhood))
-        st.write(pd.DataFrame({'mean':[1.511,15.2,0.58,0.18,0.88],
-                               'std':[1.511,15.2,0.58,0.18,0.88],
-                               'min':[1.511,15.2,0.58,0.18,0.88],
-                               'max':[1.511,15.2,0.58,0.18,0.88]},
-                              index = ['area','perimeter','avg length:width','std length:width','range length:width']))
-                                                        
+        geometry_df = geoNTA[geoNTA.index.isin([neighborhood,'Manhattan'])].T
+        st.write(geometry_df)
+                                                               
         st.write("")
         st.write("")
         col1, col2 = st.beta_columns([3,2])
