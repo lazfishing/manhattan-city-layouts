@@ -47,8 +47,9 @@ def main():
     geoCluster = pd.read_csv('data/geoCluster.csv',index_col=0)
     
     ### SIDEBAR CONTENT ###
-    display_side_panel_header("Menu")
-    session_state.pages = st.sidebar.radio("Navigate Webapp", options=['Introduction','Classifying Urban Layout Typologies','Neighborhood Analysis','Generating Urban Layouts'])
+    display_side_panel_header("Planning Appliations")
+    session_state.pages = st.sidebar.radio("Navigate different urban planning applications", 
+                                           options=['Introduction','Classifying Urban Layout Typologies','Neighborhood Analysis','Generating Urban Layouts'])
     
     ### Introduction ###
     if session_state.pages == 'Introduction':
@@ -66,7 +67,6 @@ def main():
         
     ### Classifying Urban Layout Typologies ###
     if session_state.pages == 'Classifying Urban Layout Typologies':
-        st.header('hello',anchor='hello')
         sub_txt = "Classifying Urban Layout Typologies"
         display_app_header(main_txt,sub_txt,is_sidebar = False)
         
