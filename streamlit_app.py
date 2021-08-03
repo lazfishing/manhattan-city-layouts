@@ -151,6 +151,7 @@ def main():
         total_buildings = len(nta_profile)
 
         st.markdown("**Geometric profile of {}**".format(neighborhood))
+        st.write('The geometry values are expressed in standardized units and are useful for comparing against the Manhattan baseline.')
         geometry_df = geoNTA[geoNTA.index.isin([neighborhood,'Manhattan'])].T
         st.write(geometry_df)
                                                                
